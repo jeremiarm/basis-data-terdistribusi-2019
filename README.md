@@ -4,7 +4,7 @@
 
 Gambar Infrastruktur
 <br />
-![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/ETS/Desain%20Infrastruktur.png)
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/Desain%20Infrastruktur/Desain%20Infrastruktur.png)
 
 ### Jumlah Server <br />
 ->Server Database sebanyak 3 buah <br />

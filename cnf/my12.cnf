@@ -48,7 +48,7 @@ loose-group_replication_single_primary_mode = OFF
 loose-group_replication_enforce_update_everywhere_checks = ON
 
 # Host specific replication configuration
-server_id = 12
+server_id = 2
 bind-address = "192.168.16.103"
 report_host = "192.168.16.103"
 loose-group_replication_local_address = "192.168.16.103:33061"

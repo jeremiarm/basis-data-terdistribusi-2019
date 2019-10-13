@@ -1,0 +1,7 @@
+vagrant up
+vagrant ssh proxy
+mysql -u admin -p -h 127.0.0.1 -P 6032 < /vagrant/sql/proxysql.sql (password = admin)
+mysql -u admin -p -h 127.0.0.1 -P 6032 --prompt='ProxySQLAdmin> ' (password = password)
+SELECT hostgroup_id, hostname, status FROM runtime_mysql_servers;
+
+mysql -u mradmin -p -h 127.0.0.1 -P 6033 (password : mradmin)

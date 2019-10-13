@@ -22,4 +22,6 @@ sudo ufw allow 33061
 sudo ufw allow 3306
 
 sudo systemctl start proxysql
-mysql -u admin -padmin -h 127.0.0.1 -P 6032 < /vagrant/proxysql.sql
+#mysql -u admin -p -h 127.0.0.1 -P 6032 < /vagrant/sql/proxysql.sql
+#password : admin 
+#password : password

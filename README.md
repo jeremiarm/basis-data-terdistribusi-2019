@@ -6,7 +6,7 @@
 
 ### Gambar Infrastruktur
 ![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/Desain%20Infrastruktur/Desain%20Infrastruktur.png)
-
+<br />
 ### Jumlah Server <br />
 ->Server Database sebanyak 3 buah <br />
 ->Proxy sebanya 1 buah <br />
@@ -562,23 +562,23 @@ loose-group_replication_local_address = "192.168.16.104:33061"
 ```
 
 Penjelasan code :
--gtid= ON
--Memberikan loose-group_replication_group_name universal unique ID (UUID). UUID bisa didapat dari UUID generator online.
--Memberikan loose-group_replication_ip_whitelist list IP pada group replication
--Memberikan loose-group_replication_group_seeds list IP dan port pada group replication
--loose-group_replication_single_primary_mode = OFF
--loose-group_replication_enforce_update_everywhere_checks =ON
--Memberikan server_id , bind-address, report_host, loose-group_replication_local_address IP dan port sesuai server masing-masing.
+-gtid= ON <br />
+-Memberikan loose-group_replication_group_name universal unique ID (UUID). UUID bisa didapat dari UUID generator online. <br />
+-Memberikan loose-group_replication_ip_whitelist list IP pada group replication <br />
+-Memberikan loose-group_replication_group_seeds list IP dan port pada group replication <br />
+-loose-group_replication_single_primary_mode = OFF <br />
+-loose-group_replication_enforce_update_everywhere_checks =ON <br />
+-Memberikan server_id , bind-address, report_host, loose-group_replication_local_address IP dan port sesuai server masing-masing. <br />
 
 7. Menjalankan vagrant
-- Buka cmd di lokasi ``VagrantFile`` berada, kemudian jalankan ``vagrant up``. Proses ini berjalan cukup lama, butuh koneksi internet dan space memory yang cukup
-- jalankan ``vagrant status`` untuk mengecek apakah setiap server yang dikonfigurasikan berjalan
-![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570979976215.jpg)
-- jalankan ``vagrant ssh proxy`` untuk masuk ke server proxysql
-- jalankan ``mysql -u admin -p -h 127.0.0.1 -P 6032 < /vagrant/sql/proxysql.sql`` (password = admin) untuk menjalankan script proxysql.sql (setelah dijalankan, password akan berubah jadi "password)
-- jalankan mysql -u admin -p -h 127.0.0.1 -P 6032 --prompt='ProxySQLAdmin> '
+- Buka cmd di lokasi ``VagrantFile`` berada, kemudian jalankan ``vagrant up``. Proses ini berjalan cukup lama, butuh koneksi internet dan space memory yang cukup <br />
+- jalankan ``vagrant status`` untuk mengecek apakah setiap server yang dikonfigurasikan berjalan <br />
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570979976215.jpg) <br />
+- jalankan ``vagrant ssh proxy`` untuk masuk ke server proxysql <br />
+- jalankan ``mysql -u admin -p -h 127.0.0.1 -P 6032 < /vagrant/sql/proxysql.sql`` (password = admin) untuk menjalankan script proxysql.sql (setelah dijalankan, password akan berubah jadi "password) <br />
+- jalankan mysql -u admin -p -h 127.0.0.1 -P 6032 --prompt='ProxySQLAdmin> ' <br />
 - jalankan SELECT hostgroup_id, hostname, status FROM runtime_mysql_servers; untuk mengecek server yang tergroup
-![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570979932669.jpg)
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570979932669.jpg) <br />
 
 # 2. Penggunaan Basis Data Terdistribusi dalam Aplikasi Meeting Room
 
@@ -646,7 +646,7 @@ php artisan migrate
 php artisan storage link
 php artisan db:seed
 ```
-![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570980712210.jpg)
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570980712210.jpg) <br />
 ## Meeting Room
 Meeting Room merupakan aplikasi web berbasis laravel yang digunkanan untuk membuat booking pada ruangan yang tersedia. Ada juga halaman admin yang digunakan untuk menambah dan mengatur gedung, ruangan, dan konfigurasi lainnya, serta menghapus booking. Booking akan dikonfirmasi di ruangan tempat booking(ada tablet ipad di ruangan).
 
@@ -659,7 +659,7 @@ Meeting Room merupakan aplikasi web berbasis laravel yang digunkanan untuk membu
 use meetingroom;
 select * from buildings;
 ```
-![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570980926359.jpg)
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570980926359.jpg) <br />
 4. Keluar dari mysql, kemudian jalankan
 ```
 sudo systemctl stop mysql
@@ -671,12 +671,13 @@ sudo systemctl status mysql
 7. Jalankan ``SELECT hostgroup_id, hostname, status FROM runtime_mysql_servers;`` untuk mengecek apakah mysql db3 sudah berhenti
 ![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981079948.jpg)
 8. Lakukan proses penambahan building
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570982412367.jpg) <br />
 9. Masuk lagi ke db3 ( langkah 1)
 10. Jalankan
 ```
 sudo systemctl start mysql
 sudo systemctl status mysql
 ```
-![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981314064.jpg)
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981314064.jpg) <br />
 11. Liat isi building ( langkah 3)
-![alt text(https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981357337.jpg)
+![alt text(https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981357337.jpg) <br />

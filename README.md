@@ -573,7 +573,110 @@ Penjelasan code :
 7. Menjalankan vagrant
 - Buka cmd di lokasi ``VagrantFile`` berada, kemudian jalankan ``vagrant up``. Proses ini berjalan cukup lama, butuh koneksi internet dan space memory yang cukup
 - jalankan ``vagrant status`` untuk mengecek apakah setiap server yang dikonfigurasikan berjalan
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570979976215.jpg)
 - jalankan ``vagrant ssh proxy`` untuk masuk ke server proxysql
 - jalankan ``mysql -u admin -p -h 127.0.0.1 -P 6032 < /vagrant/sql/proxysql.sql`` (password = admin) untuk menjalankan script proxysql.sql (setelah dijalankan, password akan berubah jadi "password)
 - jalankan mysql -u admin -p -h 127.0.0.1 -P 6032 --prompt='ProxySQLAdmin> '
 - jalankan SELECT hostgroup_id, hostname, status FROM runtime_mysql_servers; untuk mengecek server yang tergroup
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570979932669.jpg)
+
+# 2. Penggunaan Basis Data Terdistribusi dalam Aplikasi Meeting Room
+
+## Instalasi dan konfigurasi Meeting Room
+1. download zip dari https://github.com/dennyrengganis/KPMR
+2. ekstraksi zip, kemudian masuk ke folder KPMR
+3. copy .env basic dari laravel
+4. buka cmd, kemudian jalankan
+```
+composer install
+php artisan key:generate
+```
+5. ubah .env jadi
+```
+APP_NAME=Laravel
+APP_ENV=local
+APP_KEY=base64:UGyDfxmXLfxpG2OEiaYt8dVrM1zF9o+IqedEshkmbe4=
+APP_DEBUG=true
+APP_URL=http://localhost
+
+LOG_CHANNEL=stack
+
+DB_CONNECTION=mysql
+DB_HOST=192.168.16.105
+DB_PORT=6033
+DB_DATABASE=meetingroom
+DB_USERNAME=mradmin
+DB_PASSWORD=mradmin
+
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_DRIVER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=465
+MAIL_USERNAME=meetingr44@gmail.com
+MAIL_PASSWORD="DetailInfo"
+MAIL_ENCRYPTION=ssl
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_APP_CLUSTER=mt1
+
+MIX_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+MIX_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+```
+DB_Connection adalah mysql, DB_Host merupakan IP proxysql, DB_Port merupakan Port proxysql, DB_Database adalah nama database yang digunakan, DB_username merupakan user, dan db_password merupakan password dari user(sesuai script sql yang dijalankan)
+
+6. Jalankan 
+```
+php artisan migrate
+php artisan storage link
+php artisan db:seed
+```
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570980712210.jpg)
+## Meeting Room
+Meeting Room merupakan aplikasi web berbasis laravel yang digunkanan untuk membuat booking pada ruangan yang tersedia. Ada juga halaman admin yang digunakan untuk menambah dan mengatur gedung, ruangan, dan konfigurasi lainnya, serta menghapus booking. Booking akan dikonfirmasi di ruangan tempat booking(ada tablet ipad di ruangan).
+
+# 3. SIMULASI FAIL-OVER
+
+1. Masuk ke salah satu database server ( untuk kali ini db3) dengan ``vagrant ssh db3``
+2. Jalankan ``mysql -u root -p`` (password = admin)
+3. Liat isi building dengan menjalankan
+```
+use meetingroom;
+select * from buildings;
+```
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570980926359.jpg)
+4. Keluar dari mysql, kemudian jalankan
+```
+sudo systemctl stop mysql
+sudo systemctl status mysql
+```
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570980996055.jpg)
+5. Masuk ke server proxy dengan ``vagrant ssh proxy``
+6. Jalankan ``mysql -u admin -p -h 127.0.0.1 -P 6032 --prompt='ProxySQLAdmin> ' `` (password = password)
+7. Jalankan ``SELECT hostgroup_id, hostname, status FROM runtime_mysql_servers;`` untuk mengecek apakah mysql db3 sudah berhenti
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981079948.jpg)
+8. Lakukan proses penambahan building
+9. Masuk lagi ke db3 ( langkah 1)
+10. Jalankan
+```
+sudo systemctl start mysql
+sudo systemctl status mysql
+```
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981314064.jpg)
+11. Liat isi building ( langkah 3)
+![alt text(https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981357337.jpg)

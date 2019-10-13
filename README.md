@@ -1,8 +1,10 @@
 # ETS BDT 2019
 
-## 1. Desain dan Implementasi Infrastruktur
+# 1. Desain dan Implementasi Infrastruktur
 
-Gambar Infrastruktur
+## DESAIN INFRASTRUKTUR
+
+### Gambar Infrastruktur
 <br />
 ![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/Desain%20Infrastruktur/Desain%20Infrastruktur.png)
 
@@ -20,3 +22,10 @@ Apache Webserver  dengan RAM 8192 MB dengan OS Windows 8.1 Pro <br />
 192.168.16.104 (MySQL Server 3) <br />
 192.168.16.105 (Proxy MySQL) <br />
 localhost (Apache WebServer) <br />
+
+## IMPLEMENTASI INFRASTRUKTUR
+
+### Proses Instalasi
+
+1. Aplikasi yang harus diinstall
+    - Vagrant

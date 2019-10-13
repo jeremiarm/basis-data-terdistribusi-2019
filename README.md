@@ -652,32 +652,33 @@ Meeting Room merupakan aplikasi web berbasis laravel yang digunkanan untuk membu
 
 # 3. SIMULASI FAIL-OVER
 
-1. Masuk ke salah satu database server ( untuk kali ini db3) dengan ``vagrant ssh db3``
-2. Jalankan ``mysql -u root -p`` (password = admin)
-3. Liat isi building dengan menjalankan
+1. Masuk ke salah satu database server ( untuk kali ini db3) dengan ``vagrant ssh db3`` <br />
+2. Jalankan ``mysql -u root -p`` (password = admin) <br />
+3. Liat isi building dengan menjalankan <br />
 ```
 use meetingroom;
 select * from buildings;
 ```
+<br />
 ![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570980926359.jpg) <br />
-4. Keluar dari mysql, kemudian jalankan
+4. Keluar dari mysql, kemudian jalankan <br />
 ```
 sudo systemctl stop mysql
 sudo systemctl status mysql
 ```
 ![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570980996055.jpg)
-5. Masuk ke server proxy dengan ``vagrant ssh proxy``
-6. Jalankan ``mysql -u admin -p -h 127.0.0.1 -P 6032 --prompt='ProxySQLAdmin> ' `` (password = password)
+5. Masuk ke server proxy dengan ``vagrant ssh proxy`` <br />
+6. Jalankan ``mysql -u admin -p -h 127.0.0.1 -P 6032 --prompt='ProxySQLAdmin> ' `` (password = password) <br />
 7. Jalankan ``SELECT hostgroup_id, hostname, status FROM runtime_mysql_servers;`` untuk mengecek apakah mysql db3 sudah berhenti
-![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981079948.jpg)
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981079948.jpg) 
 8. Lakukan proses penambahan building
-![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570982412367.jpg) <br />
-9. Masuk lagi ke db3 ( langkah 1)
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570982412367.jpg) 
+9. Masuk lagi ke db3 ( langkah 1) 
 10. Jalankan
 ```
 sudo systemctl start mysql
 sudo systemctl status mysql
 ```
-![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981314064.jpg) <br />
-11. Liat isi building ( langkah 3)
-![alt text(https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981357337.jpg) <br />
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981314064.jpg)    
+11. Liat isi building ( langkah 3)  
+![alt text](https://github.com/jeremiarm/basis-data-terdistribusi-2019/blob/master/documentation/1570981357337.jpg)   

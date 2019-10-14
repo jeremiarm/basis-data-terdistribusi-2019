@@ -1,0 +1,295 @@
+* {
+  box-sizing: border-box;
+}
+
+.form-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  background-color: white;
+  height: 25vh;
+}
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+.open-button {
+  background-color: #23e857;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+.cancel-button{
+  background-color: #233ae8;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.bodybr{
+  background-color: #d1d1d1;
+  padding-bottom: 10px;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-top: 1%;
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;/*
+  border: 1px solid red;*/
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+  font-weight: bold;
+}
+@media only screen and (max-width: 800px) {
+  div.hide {
+    display: none;
+  }
+.book-popup-s {
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid black;
+  z-index: 9;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  height: 27vh;
+  padding: -5px -5px -5px -5px;
+  }
+  .detail-2{
+  text-align: center;
+  padding-top: 10%;
+  height: 60vh;
+  }
+  .tableHead          { overflow-y: auto; height: 30vh;  }
+  .tableHead thead th { position: sticky; top: -13px;}
+  .tableHead table  { border-collapse: collapse; width: 100%; }
+  .tableHead th, td { padding: 8px 8px 8px 8px; height: 8vh; }
+  .tableHead th     { background:#eee; }
+
+  .tableHead { border: 0.5px solid black; border-left: 0.5px solid black; border-right: 0.5px solid black; }
+  .tableHead th, td { border: 0.5px solid #000; border-top: 0; }
+  .tableHead tbody tr:last-child td { border-bottom: 0.5px solid black; border-right: 0.5px solid black; border-left: 0.5px solid black }
+  .tableHead thead th { box-shadow: 0.5px 0.5px 0 #000; }
+  }
+@media only screen and (min-width: 800px) {
+  div.hide2 {
+    display: none;
+  }
+.book-popup-w {
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid black;
+  z-index: 9;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  height: 40vh;
+  }
+  .detailroombox{
+  text-align: center;
+  padding-top: 10%;
+  height: 90vh;
+}
+.tableFixHead          { overflow-y: auto; height: 42.5vh; }
+.tableFixHead thead th { position: sticky; top: 0; }
+table  { border-collapse: collapse; width: 100%; }
+th, td { padding: 8px 16px; height: 10vh; }
+th     { background:#eee; }
+
+.tableFixHead { border: 0.5px solid #000; border-left: 0.5px solid black; border-right: 0.5px solid black; }
+.tableFixHead th, td { border: 0.5px solid #000; border-top: 0.5 solid black; }
+.tableFixHead tbody tr:last-child td {  border-bottom: 0.5px solid black; border-right: 0.5px solid black; border-left: 0.5px solid black; border-top: 0.5px solid black; }
+.tableFixHead thead th { box-shadow: 0.5px 0.5px 0 #000; }
+}
+
+@media only screen and (min-width: 608px) {
+  /* For tablets: */
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+
+@media only screen and (min-width: 800px) {
+  /* For desktop: */
+  .col-w-1 {width: 8.33%;}
+  .col-w-2 {width: 16.66%;}
+  .col-w-3 {width: 25%;}
+  .col-w-4 {width: 33.33%;}
+  .col-w-5 {width: 41.66%;}
+  .col-w-6 {width: 50%;}
+  .col-w-7 {width: 58.33%;}
+  .col-w-8 {width: 66.66%;}
+  .col-w-9 {width: 75%;}
+  .col-w-10 {width: 83.33%;}
+  .col-w-11 {width: 91.66%;}
+  .col-w-12 {width: 100%;}
+}
+
+.header {
+  margin-left: 1%;
+/*  border: 1px solid red;*/
+  padding: 15px;
+}
+
+.center{
+	text-align: center;
+	font-size: 150%;
+}
+
+.center>.fonta{
+  font-size: 200%;
+  margin-bottom: -10%;
+  margin-top: -10%;
+}
+.center>.fontb{
+  font-size: 80%;
+
+}
+.center>.fontc{
+  font-size: 150%; 
+  margin-bottom: -10%;
+}
+
+.center>.fontd{
+  font-size: 150%; 
+  margin-top: -10%;
+}
+
+.center>.fonte{
+  font-size: 150%; 
+  margin-top: -10%;
+  margin-bottom: -10%;
+}
+
+
+.left{
+  text-align: left;
+  font-size: 150%;
+}
+.dropdownbox{
+/*	border: 1px solid black;*/
+	padding-bottom: 5px;
+}
+.buttonlike{
+    display:inline-block;
+    color:white;
+    border:1px solid #CCC;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    cursor:pointer;
+    vertical-align:middle;
+    width: 100%;
+    max-width: 100%;
+    padding: 5px;
+    text-align: center;
+}
+/*.buttonlike:active {
+    color:red;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+}*/
+.booked{
+	background:#f0484e;
+}
+.free{
+	background:#80e66a;
+}
+.waiting{
+    background:#ffb30f;
+}
+input{
+  width: 75%;
+}
+.roomFont{
+  color: white;
+}
+.pageRoomFont{
+  color: black;
+}
+
+/*Fixed table head - CSS-only
+Simply position: sticky; top: 0; your th elements. (Chrome, FF, Edge)
+*/
+
+/*
+table {
+    width: 100%;
+    display:block;
+}
+thead {
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+}
+tbody {
+    height: 100px;
+    border:1px solid red;
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+}*/
+
+select, option {
+    max-width:150px;
+}
+
+.tableBookHead thead th { position: sticky; top: 0; }
+table  { border-collapse: collapse; width: 100%; }
+th, td { padding: 8px 16px; height: 10vh; }
+th     { background:#eee; }
+
+.tableBookHead { border: 0.5px solid #000; border-left: 0.5px solid black; border-right: 0.5px solid black; }
+.tableBookHead th, td { border: 0.5px solid #000; border-top: 0.5 solid black; }
+.tableBookHead tbody tr:last-child td {  border-bottom: 0.5px solid black; border-right: 0.5px solid black; border-left: 0.5px solid black; border-top: 0.5px solid black; }
+.tableBookHead thead th { box-shadow: 0.5px 0.5px 0 #000; }
+
